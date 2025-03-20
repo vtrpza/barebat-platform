@@ -19,6 +19,8 @@ BAREBAT is an AI-powered platform for brazilian market only, that simplifies the
 - 🔐 Secure authentication and user management
 - 💳 Stripe payment processing
 - 📱 Responsive design for all devices
+- 🌟 Modern landing page with clear value proposition
+- 💎 Transparent pricing and features comparison
 
 ## Business Model
 - Free website creation with basic templates
@@ -35,6 +37,12 @@ BAREBAT is an AI-powered platform for brazilian market only, that simplifies the
 - [x] Authentication system
 - [x] Builder.io integration
 - [x] Template system implementation
+- [x] Landing page development
+  - [x] Hero section
+  - [x] Features showcase
+  - [x] Pricing plans
+  - [x] Testimonials
+  - [x] Call-to-action
 
 ### Phase 2: Core Features (Current Focus)
 - [ ] AI integration with OpenAI

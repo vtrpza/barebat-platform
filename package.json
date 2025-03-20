@@ -12,6 +12,7 @@
   "dependencies": {
     "@builder.io/react": "^8.0.10",
     "@builder.io/sdk": "^6.0.4",
+    "@heroicons/react": "^2.2.0",
     "@stripe/stripe-js": "^2.4.0",
     "@supabase/auth-helpers-nextjs": "^0.9.0",
     "@supabase/supabase-js": "^2.39.0",

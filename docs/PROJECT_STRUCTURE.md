@@ -30,7 +30,15 @@ barebat-platform/
 │   │   ├── TemplateSelector.tsx
 │   │   ├── TemplatePreview.tsx
 │   │   └── TemplateCustomizer.tsx
+│   ├── landing/
+│   │   ├── Hero.tsx
+│   │   ├── Features.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── Testimonials.tsx
+│   │   └── CTASection.tsx
 │   └── shared/
+│       ├── SectionContainer.tsx
+│       └── SectionHeading.tsx
 ├── lib/
 │   ├── builder/
 │   │   ├── templates.ts
@@ -86,6 +94,15 @@ barebat-platform/
    - ✅ New site creation page
    - ✅ Template preview system
    - ✅ Template customization options
+
+- [x] Landing page development
+  - [x] Hero section
+  - [x] Features showcase with animations
+  - [x] Pricing plans
+  - [x] Testimonials with dynamic content
+  - [x] Call-to-action with improved UX
+  - [x] Shared components for consistent design
+  - [x] Performance and accessibility optimizations
 
 ### Phase 2: Core Features (Current Focus)
 1. Website Management
@@ -148,15 +165,40 @@ lib/
       └── client.ts    // Supabase client configuration
 app/
   └── auth/
-      ├── signin/
+      ├── entrar/           // Login page (PT-BR)
       │   └── page.tsx
-      └── signup/
+      ├── cadastro/         // Signup page (PT-BR)
+      │   └── page.tsx
+      ├── esqueci-senha/    // Forgot password page (PT-BR)
+      │   └── page.tsx
+      └── redefinir-senha/  // Reset password page (PT-BR)
           └── page.tsx
 components/
   └── auth/
-      └── AuthForm.tsx
+      ├── LoginForm.tsx
+      ├── SignupForm.tsx
+      ├── ForgotPasswordForm.tsx
+      ├── ResetPasswordForm.tsx
+      └── shared/
+          ├── AuthLayout.tsx      // Shared layout for auth pages
+          ├── AuthButton.tsx      // Styled button component
+          └── AuthInput.tsx       // Styled input component
 middleware.ts         // Protected routes
 ```
+
+Authentication pages improvements:
+- All pages and routes in Brazilian Portuguese
+- Consistent design system across all auth pages
+- Improved error handling and validation
+- Password strength requirements
+- Social login integration (Google, Facebook)
+- Email verification flow
+- Responsive design for all devices
+- Loading states and animations
+- Clear success/error messages
+- Remember me functionality
+- Session management
+- Security features (rate limiting, CAPTCHA)
 
 ### 2. Database Schema
 ```sql
@@ -203,6 +245,113 @@ transactions
   - status
   - commission_rate
   - created_at
+```
+
+## GitFlow Workflow
+
+### Branch Structure
+```
+main (production)
+├── develop (staging)
+│   ├── feature/auth-improvements
+│   ├── feature/landing-page
+│   ├── feature/dashboard
+│   └── feature/template-system
+└── hotfix/*
+```
+
+### Branch Types
+1. **Main Branch (main)**
+   - Production-ready code
+   - Tagged with version numbers
+   - Protected from direct pushes
+   - Requires pull request approval
+
+2. **Development Branch (develop)**
+   - Integration branch for features
+   - Staging environment
+   - CI/CD pipeline runs tests
+   - Pre-production testing
+
+3. **Feature Branches (feature/)**
+   - Created from: develop
+   - Merge back to: develop
+   - Naming: feature/feature-name
+   - Example: feature/auth-improvements
+
+4. **Hotfix Branches (hotfix/)**
+   - Created from: main
+   - Merge back to: main and develop
+   - For urgent production fixes
+   - Naming: hotfix/issue-description
+
+5. **Release Branches (release/)**
+   - Created from: develop
+   - Merge back to: main and develop
+   - For version preparation
+   - Naming: release/v1.0.0
+
+### Workflow Rules
+1. **Feature Development**
+   - Create feature branch from develop
+   - Regular commits with clear messages
+   - Keep branches up to date with develop
+   - Write tests for new features
+   - Document changes
+
+2. **Code Review**
+   - Required for all pull requests
+   - At least one approval needed
+   - CI checks must pass
+   - No direct commits to protected branches
+   - Clean commit history
+
+3. **Merging**
+   - Squash and merge feature branches
+   - Preserve feature branch history
+   - Delete branches after merging
+   - Update version numbers
+   - Keep commit messages clean
+
+4. **Versioning**
+   - Follow semantic versioning
+   - Tag releases in main branch
+   - Update changelog
+   - Document breaking changes
+
+5. **Deployment**
+   - Automated deployment to staging
+   - Manual approval for production
+   - Rollback plan for each deploy
+   - Monitor post-deployment
+
+### Commit Message Convention
+```
+type(scope): subject
+
+body
+
+footer
+```
+
+Types:
+- feat: New feature
+- fix: Bug fix
+- docs: Documentation
+- style: Formatting
+- refactor: Code restructuring
+- test: Adding tests
+- chore: Maintenance
+
+Example:
+```
+feat(auth): implement Portuguese language support
+
+- Add PT-BR translations for all auth pages
+- Update route structure to use Portuguese URLs
+- Implement language switcher component
+
+Closes #123
 ```
 
 ## Business Model Details
@@ -274,15 +423,23 @@ transactions
    - Use TypeScript for type safety
    - Implement proper error handling
    - Write unit tests for critical features
+   - Use shared components for consistent design
+   - Implement animations for better UX
+   - Ensure accessibility compliance
+   - Optimize performance with proper loading strategies
 
 2. Git Workflow
    - Feature branches
    - Pull request reviews
    - Semantic versioning
    - Conventional commits
+   - Regular documentation updates
+   - Clean commit history
 
 3. Documentation
    - Code comments
    - API documentation
    - Component documentation
    - Setup instructions
+   - Performance and accessibility guidelines
+   - Design system documentation
