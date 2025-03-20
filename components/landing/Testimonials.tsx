@@ -1,33 +1,27 @@
-import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { StarIcon } from '@heroicons/react/24/solid'
+import SectionContainer from './SectionContainer'
+import SectionHeading from './SectionHeading'
+import { cn } from '@/lib/utils'
 
 const testimonials = [
   {
-    content:
-      'O BAREBAT tornou a criação do site do Bar Mitzvah do meu filho super fácil. O assistente de IA ajudou muito com os textos e a organização dos presentes foi perfeita!',
-    author: {
-      name: 'Rachel Cohen',
-      role: 'Mãe do Gabriel',
-      seed: 'rachel-cohen',
-    },
+    name: 'Ana Goldstein',
+    role: 'Mãe da Sarah',
+    content: 'O BAREBAT foi essencial para organizar o Bat Mitzvah da minha filha. A plataforma é intuitiva e o suporte é excelente!',
+    seed: 'ana123',
   },
   {
-    content:
-      'Adorei como o site ficou moderno e personalizado. Os convidados elogiaram muito a facilidade de confirmar presença e escolher presentes.',
-    author: {
-      name: 'Daniel Stern',
-      role: 'Pai da Sarah',
-      seed: 'daniel-stern',
-    },
+    name: 'Daniel Cohen',
+    role: 'Pai do Gabriel',
+    content: 'Conseguimos criar um site lindo para o Bar Mitzvah do nosso filho em poucos minutos. A lista de presentes integrada é fantástica!',
+    seed: 'daniel456',
   },
   {
-    content:
-      'A plataforma é incrível! Consegui criar um site lindo para minha Bat Mitzvah em poucos minutos. O suporte foi muito atencioso quando precisei de ajuda.',
-    author: {
-      name: 'Sofia Goldstein',
-      role: 'Bat Mitzvah',
-      seed: 'sofia-goldstein',
-    },
+    name: 'Raquel Levy',
+    role: 'Mãe do David',
+    content: 'A gestão de convidados e os lembretes automáticos tornaram todo o processo muito mais fácil. Recomendo muito!',
+    seed: 'raquel789',
   },
 ]
 
@@ -48,61 +42,63 @@ const item = {
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            O que as famílias dizem sobre nós
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-            Junte-se a centenas de famílias que já criaram sites incríveis com BAREBAT.
-          </p>
-        </motion.div>
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {testimonials.map((testimonial) => (
-            <motion.div
-              key={testimonial.author.name}
-              variants={item}
-              className="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 p-8 hover:border-indigo-500 transition-all duration-300 hover:shadow-md"
-            >
-              <blockquote className="flex-grow">
-                <p className="text-lg text-gray-600">{testimonial.content}</p>
+    <SectionContainer className="bg-white">
+      <SectionHeading
+        title="O que as famílias dizem"
+        subtitle="Descubra por que centenas de famílias escolheram o BAREBAT para criar seus sites."
+      />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="mt-20 grid gap-8 lg:grid-cols-3 sm:grid-cols-2"
+      >
+        {testimonials.map((testimonial) => (
+          <motion.div
+            key={testimonial.name}
+            variants={item}
+            className="relative group"
+          >
+            <div className="h-full rounded-2xl bg-gray-50 p-8 transition-all duration-300 hover:bg-white hover:shadow-xl">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <StarIcon
+                    key={i}
+                    className={cn(
+                      'h-5 w-5 transition-colors duration-300',
+                      'text-yellow-400 group-hover:text-yellow-500'
+                    )}
+                  />
+                ))}
+              </div>
+              <blockquote className="relative">
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {testimonial.content}
+                </p>
               </blockquote>
-              <div className="mt-8 flex items-center">
-                <div className="flex-shrink-0">
-                  <Image
-                    className="h-12 w-12 rounded-full"
-                    src={`https://api.dicebear.com/7.x/personas/svg?seed=${testimonial.author.seed}&backgroundColor=indigo`}
-                    alt={testimonial.author.name}
-                    width={48}
-                    height={48}
+              <div className="relative mt-8 flex items-center gap-4">
+                <div className="overflow-hidden rounded-full bg-gray-100 ring-4 ring-white transition-all duration-300 group-hover:ring-indigo-50">
+                  <img
+                    src={`https://api.dicebear.com/7.x/personas/svg?seed=${testimonial.seed}&backgroundColor=b6e3f4`}
+                    alt={testimonial.name}
+                    className="h-12 w-12"
                   />
                 </div>
-                <div className="ml-4">
-                  <div className="text-base font-medium text-gray-900">
-                    {testimonial.author.name}
+                <div>
+                  <div className="font-semibold text-gray-900 transition-colors duration-300 group-hover:text-indigo-600">
+                    {testimonial.name}
                   </div>
                   <div className="text-sm text-gray-500">
-                    {testimonial.author.role}
+                    {testimonial.role}
                   </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </SectionContainer>
   )
 } 
