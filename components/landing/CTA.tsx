@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import SectionContainer from './SectionContainer'

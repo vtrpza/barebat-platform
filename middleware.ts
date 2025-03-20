@@ -10,14 +10,17 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession()
 
+  console.log('Middleware - Current path:', req.nextUrl.pathname)
+  console.log('Middleware - Session exists:', !!session)
+
   // If there's no session and the user is trying to access a protected route
   if (!session && (
     req.nextUrl.pathname.startsWith('/dashboard') ||
     req.nextUrl.pathname.startsWith('/editor')
   )) {
-    const redirectUrl = req.nextUrl.clone()
-    redirectUrl.pathname = '/auth/signin'
-    redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname)
+    console.log('Middleware - Redirecting to login')
+    const redirectUrl = new URL('/auth/entrar', req.url)
+    redirectUrl.searchParams.set('redirectedFrom', req.nextUrl.pathname)
     return NextResponse.redirect(redirectUrl)
   }
 
@@ -26,9 +29,8 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.startsWith('/auth/entrar') ||
     req.nextUrl.pathname.startsWith('/auth/cadastro')
   )) {
-    const redirectUrl = req.nextUrl.clone()
-    redirectUrl.pathname = '/dashboard'
-    return NextResponse.redirect(redirectUrl)
+    console.log('Middleware - Redirecting to dashboard')
+    return NextResponse.redirect(new URL('/dashboard', req.url))
   }
 
   return res

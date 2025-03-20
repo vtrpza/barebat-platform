@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { supabase } from '@/lib/supabase/client';
 import AuthLayout from '@/components/auth/shared/AuthLayout';
 import AuthInput from '@/components/auth/shared/AuthInput';
 import AuthButton from '@/components/auth/shared/AuthButton';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -21,17 +23,46 @@ export default function LoginPage() {
       const formData = new FormData(e.currentTarget);
       const email = formData.get('email') as string;
       const password = formData.get('password') as string;
+      const remember = formData.get('remember') === 'on';
 
       if (!email || !password) {
         setError('Por favor, preencha todos os campos.');
         return;
       }
 
-      // TODO: Implement login logic with Supabase
+      console.log('Attempting to sign in...');
       
-      router.push('/dashboard');
+      // Sign in with Supabase
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (signInError) {
+        if (signInError.message.includes('Invalid login credentials')) {
+          throw new Error('E-mail ou senha incorretos.');
+        }
+        throw signInError;
+      }
+
+      console.log('Sign in successful');
+
+      // Get the redirect URL
+      const redirectTo = searchParams.get('redirectedFrom') || '/dashboard';
+      console.log('Redirecting to:', redirectTo);
+
+      // Wait a moment for the session to be fully established
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Use replace instead of push to avoid back button issues
+      router.replace(redirectTo);
     } catch (err) {
-      setError('Ocorreu um erro ao fazer login. Por favor, tente novamente.');
+      console.error('Login error:', err);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Ocorreu um erro ao fazer login. Por favor, tente novamente.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -46,6 +77,12 @@ export default function LoginPage() {
         {error && (
           <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
             {error}
+          </div>
+        )}
+
+        {searchParams.get('reset') === 'success' && (
+          <div className="p-3 rounded-lg bg-green-50 text-green-600 text-sm">
+            Sua senha foi redefinida com sucesso! Você já pode fazer login.
           </div>
         )}
 

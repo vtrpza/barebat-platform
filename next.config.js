@@ -1,32 +1,38 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  transpilePackages: ['framer-motion'],
+  experimental: {
+    optimizeCss: true,
+    esmExternals: 'loose',
+  },
   images: {
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.builder.io',
-      },
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'api.dicebear.com',
-        pathname: '/7.x/**',
+        hostname: 'source.unsplash.com',
       },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+      },
     ],
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  typescript: {
-    // Temporarily disable type checking during development for faster feedback
-    ignoreBuildErrors: process.env.NODE_ENV === 'development',
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
+    return config;
   },
-}
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;

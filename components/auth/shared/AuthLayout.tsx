@@ -21,7 +21,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
       >
         <div className="bg-white rounded-2xl shadow-xl p-8">
           {/* Logo */}
-          <div className="flex justify-center mb-8">
+          {/* <div className="flex justify-center mb-8">
             <Image
               src="/logo.svg"
               alt="BAREBAT Logo"
@@ -29,7 +29,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
               height={40}
               className="h-10 w-auto"
             />
-          </div>
+          </div> */}
 
           {/* Title and Subtitle */}
           <div className="text-center mb-8">

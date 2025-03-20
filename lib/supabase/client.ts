@@ -2,11 +2,15 @@ import { createClient } from '@supabase/supabase-js'
 import type { Database as SupabaseDatabase } from '@/types/supabase'
 
 if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+  console.error('Missing env.NEXT_PUBLIC_SUPABASE_URL');
   throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_URL')
 }
 if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  console.error('Missing env.NEXT_PUBLIC_SUPABASE_ANON_KEY');
   throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_ANON_KEY')
 }
+
+console.log('Initializing Supabase client with URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
 
 export const supabase = createClient<SupabaseDatabase>(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -19,6 +23,11 @@ export const supabase = createClient<SupabaseDatabase>(
     }
   }
 )
+
+// Test the Supabase connection
+supabase.auth.onAuthStateChange((event, session) => {
+  console.log('Auth state changed:', event, session?.user?.id);
+});
 
 export type Database = {
   public: {

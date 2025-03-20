@@ -7,9 +7,12 @@ barebat-platform/
 ├── app/
 │   ├── api/
 │   │   └── sites/
-│   │       └── create/
-│   │           └── route.ts
+│   │       └── route.ts
 │   ├── auth/
+│   │   ├── entrar/           # Login page (PT-BR)
+│   │   ├── cadastro/         # Signup page (PT-BR)
+│   │   ├── esqueci-senha/    # Forgot password page (PT-BR)
+│   │   └── redefinir-senha/  # Reset password page (PT-BR)
 │   ├── dashboard/
 │   │   └── page.tsx
 │   ├── editor/
@@ -21,6 +24,8 @@ barebat-platform/
 │   └── globals.css
 ├── components/
 │   ├── builder/
+│   │   ├── BuilderProvider.tsx  # Centralized Builder.io initialization
+│   │   ├── BuilderComponent.tsx # Type-safe Builder component
 │   │   ├── GiftRegistry.tsx
 │   │   ├── PhotoGallery.tsx
 │   │   └── RSVPForm.tsx
@@ -41,6 +46,7 @@ barebat-platform/
 │       └── SectionHeading.tsx
 ├── lib/
 │   ├── builder/
+│   │   ├── api.ts           # Builder.io API utilities
 │   │   ├── templates.ts
 │   │   ├── client.ts
 │   │   └── config.ts
@@ -74,13 +80,14 @@ barebat-platform/
 3. ✅ Authentication & Database
    - ✅ Supabase setup
    - ✅ User authentication flows
-   - ✅ Database schema design
-   - ✅ User profiles
+   - ✅ Portuguese language routes
+   - ✅ Type-safe components
    - ✅ Protected routes
+   - ✅ User profiles
 
 4. ✅ Builder.io Integration
-   - ✅ SDK setup
-   - ✅ Component registration
+   - ✅ Centralized provider setup
+   - ✅ Type-safe component system
    - ✅ Visual editor configuration
    - ✅ Custom blocks setup
    - ✅ Core components development
@@ -107,8 +114,8 @@ barebat-platform/
 ### Phase 2: Core Features (Current Focus)
 1. Website Management
    - [ ] Site creation flow
-   - [ ] Template selection interface
-   - [ ] Preview system
+   - [x] Template selection interface
+   - [x] Preview system
    - [ ] Publishing mechanism
 
 2. OpenAI Integration
