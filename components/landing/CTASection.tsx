@@ -32,7 +32,7 @@ export default function CTASection() {
             className="mt-10"
           >
             <Link
-              href="/auth/signin"
+              href="/auth/entrar"
               className="inline-flex items-center px-8 py-4 border-2 border-white rounded-xl text-xl font-semibold text-white hover:bg-white hover:text-indigo-600 transform transition-all duration-200 hover:scale-105"
             >
               Comece Gratuitamente

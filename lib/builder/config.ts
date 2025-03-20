@@ -1,12 +1,12 @@
-import { Builder } from '@builder.io/react';
+import { builder, Builder } from '@builder.io/react';
 
 export const BUILDER_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY || '';
 
 export const initBuilder = () => {
-  Builder.init(BUILDER_API_KEY);
+  builder.init(BUILDER_API_KEY);
 
   // Configure global settings
-  Builder.set({
+  Builder.settings({
     customInsertMenu: true,
     canTrack: false,
     env: process.env.NODE_ENV,
@@ -17,7 +17,7 @@ export const initBuilder = () => {
   });
 
   // Register custom targeting attributes
-  Builder.setUserAttributes({
+  builder.setUserAttributes({
     // Example: subscription tier for premium templates
     subscriptionTier: 'free',
   });

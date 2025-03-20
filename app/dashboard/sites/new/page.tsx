@@ -11,7 +11,7 @@ export default async function NewSitePage() {
   } = await supabase.auth.getSession();
 
   if (!session?.user?.id) {
-    redirect('/auth/signin');
+    redirect('/auth/entrar');
   }
 
   return (

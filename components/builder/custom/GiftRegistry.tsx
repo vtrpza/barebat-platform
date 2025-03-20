@@ -2,6 +2,7 @@
 
 import { Builder } from '@builder.io/react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface GiftOption {
   id: string;
@@ -104,10 +105,12 @@ export const GiftRegistry = ({
             >
               {showImages && gift.image && (
                 <div className="relative h-40 mb-4 rounded-md overflow-hidden">
-                  <img
+                  <Image
                     src={gift.image}
                     alt={gift.title}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               )}

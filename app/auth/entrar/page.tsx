@@ -22,6 +22,11 @@ export default function LoginPage() {
       const email = formData.get('email') as string;
       const password = formData.get('password') as string;
 
+      if (!email || !password) {
+        setError('Por favor, preencha todos os campos.');
+        return;
+      }
+
       // TODO: Implement login logic with Supabase
       
       router.push('/dashboard');

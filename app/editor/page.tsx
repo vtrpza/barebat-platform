@@ -1,6 +1,6 @@
 'use client';
 
-import { BuilderComponent } from '@/components/builder/BuilderComponent';
+import BuilderComponent from '@/components/builder/BuilderComponent';
 
 export default function EditorPage() {
   return (

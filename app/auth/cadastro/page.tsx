@@ -24,6 +24,11 @@ export default function SignupPage() {
       const password = formData.get('password') as string;
       const confirmPassword = formData.get('confirmPassword') as string;
 
+      if (!name || !email || !password) {
+        setError('Por favor, preencha todos os campos.');
+        return;
+      }
+
       if (password !== confirmPassword) {
         setError('As senhas não coincidem.');
         return;

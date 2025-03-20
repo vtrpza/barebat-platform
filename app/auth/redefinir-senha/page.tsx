@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AuthLayout from '@/components/auth/shared/AuthLayout';
 import AuthInput from '@/components/auth/shared/AuthInput';
 import AuthButton from '@/components/auth/shared/AuthButton';
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -102,5 +102,22 @@ export default function ResetPasswordPage() {
         </AuthButton>
       </form>
     </AuthLayout>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <AuthLayout
+        title="Carregando..."
+        subtitle="Por favor, aguarde"
+      >
+        <div className="flex justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+        </div>
+      </AuthLayout>
+    }>
+      <ResetPasswordForm />
+    </Suspense>
   );
 } 

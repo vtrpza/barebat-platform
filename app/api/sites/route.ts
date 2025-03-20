@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { Builder } from '@builder.io/react';
-import { BUILDER_API_KEY } from '@/lib/builder/config';
+import { createBuilderContent } from '@/lib/builder/api';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -30,25 +29,7 @@ export async function POST(request: Request) {
     }
 
     // Create content in Builder.io
-    const builderContent = await fetch('https://api.builder.io/api/v1/write/page', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${BUILDER_API_KEY}`,
-      },
-      body: JSON.stringify({
-        name: `Site ${siteData.id}`,
-        published: 'draft',
-        modelId: 'bar-mitzvah-site', // or bat-mitzvah-site based on selection
-        data: {
-          blocks: data.blocks,
-          state: {
-            siteId: siteData.id,
-            templateId: template,
-          },
-        },
-      }),
-    }).then((res) => res.json());
+    const builderContent = await createBuilderContent(siteData, template, data);
 
     // Update site with Builder.io content ID
     const { error: updateError } = await supabase

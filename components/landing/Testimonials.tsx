@@ -5,6 +5,7 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import SectionContainer from './SectionContainer'
 import SectionHeading from './SectionHeading'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 const testimonials = [
   {
@@ -81,11 +82,13 @@ export default function Testimonials() {
                 </p>
               </blockquote>
               <div className="relative mt-8 flex items-center gap-4">
-                <div className="overflow-hidden rounded-full bg-gray-100 ring-4 ring-white transition-all duration-300 group-hover:ring-indigo-50">
-                  <img
+                <div className="overflow-hidden rounded-full bg-gray-100 ring-4 ring-white transition-all duration-300 group-hover:ring-indigo-50 relative h-12 w-12">
+                  <Image
                     src={`https://api.dicebear.com/7.x/personas/svg?seed=${testimonial.seed}&backgroundColor=b6e3f4`}
                     alt={testimonial.name}
-                    className="h-12 w-12"
+                    fill
+                    className="object-cover"
+                    sizes="48px"
                   />
                 </div>
                 <div>

@@ -21,6 +21,11 @@ export default function ForgotPasswordPage() {
       const formData = new FormData(e.currentTarget);
       const email = formData.get('email') as string;
 
+      if (!email) {
+        setError('Por favor, insira seu e-mail.');
+        return;
+      }
+
       // TODO: Implement password reset logic with Supabase
       
       setSuccess(true);

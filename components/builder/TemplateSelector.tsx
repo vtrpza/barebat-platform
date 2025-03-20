@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Template, defaultTemplates } from '@/lib/builder/templates';
+import Image from 'next/image';
 
 interface TemplateSelectorProps {
   onSelect: (template: Template) => void;
@@ -38,11 +39,13 @@ export const TemplateSelector = ({ onSelect, userTier }: TemplateSelectorProps) 
                   : 'hover:shadow-lg'
               }`}
             >
-              <div className="aspect-w-16 aspect-h-9">
-                <img
+              <div className="aspect-w-16 aspect-h-9 relative">
+                <Image
                   src={template.thumbnail}
                   alt={template.name}
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 

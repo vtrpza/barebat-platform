@@ -6,44 +6,31 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       profiles: {
         Row: {
           id: string
           email: string
-          full_name: string | null
+          full_name: string
           avatar_url: string | null
-          subscription_tier: string
-          phone_number: string | null
-          address: Json | null
-          preferences: Json | null
           created_at: string
           updated_at: string
         }
         Insert: {
           id: string
           email: string
-          full_name?: string | null
+          full_name: string
           avatar_url?: string | null
-          subscription_tier?: string
-          phone_number?: string | null
-          address?: Json | null
-          preferences?: Json | null
           created_at?: string
           updated_at?: string
         }
         Update: {
           id?: string
           email?: string
-          full_name?: string | null
+          full_name?: string
           avatar_url?: string | null
-          subscription_tier?: string
-          phone_number?: string | null
-          address?: Json | null
-          preferences?: Json | null
-          created_at?: string
           updated_at?: string
         }
       }

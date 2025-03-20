@@ -53,7 +53,7 @@ export default function Hero() {
             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                 <Link
-                  href="/auth/signin"
+                  href="/auth/entrar"
                   className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transform transition-all duration-200 hover:scale-105"
                 >
                   Comece Gratuitamente

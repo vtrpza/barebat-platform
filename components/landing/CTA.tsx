@@ -2,16 +2,20 @@ import { motion } from 'framer-motion'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import SectionContainer from './SectionContainer'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 export default function CTA() {
   return (
     <SectionContainer className="relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
           alt="Background"
-          className="h-full w-full object-cover brightness-[0.2]"
+          fill
+          className="object-cover brightness-[0.2]"
+          priority
+          sizes="100vw"
         />
       </div>
 

@@ -1,16 +1,16 @@
-import { BuilderComponent as BuilderComponentBase, useIsPreviewing } from '@builder.io/react';
-import { builder } from '@/lib/builder/client';
-import { FC } from 'react';
+'use client';
+
+import { BuilderComponent as BuilderComponentBase, useIsPreviewing, BuilderContent } from '@builder.io/react';
 
 interface BuilderPageProps {
   model: string;
-  content?: any;
+  content?: BuilderContent;
 }
 
-export const BuilderComponent: FC<BuilderPageProps> = ({ model, content }) => {
+export default function BuilderComponent({ model, content }: BuilderPageProps) {
   const isPreviewing = useIsPreviewing();
 
-  // If there's no content and we're not in preview mode, show nothing
+  // Return null if there is no content and not previewing
   if (!content && !isPreviewing) {
     return null;
   }
@@ -18,8 +18,7 @@ export const BuilderComponent: FC<BuilderPageProps> = ({ model, content }) => {
   return (
     <BuilderComponentBase
       model={model}
-      content={content}
-      builder={builder}
+      content={content as any} // Type assertion needed due to Builder.io types mismatch
     />
   );
-}; 
+} 

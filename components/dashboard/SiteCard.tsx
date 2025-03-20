@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Site } from '@/types/site';
+import Image from 'next/image';
 
 interface SiteCardProps {
   site: Site;
@@ -8,12 +9,14 @@ interface SiteCardProps {
 export default function SiteCard({ site }: SiteCardProps) {
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
-      <div className="aspect-w-16 aspect-h-9 bg-gray-100">
+      <div className="aspect-w-16 aspect-h-9 bg-gray-100 relative">
         {site.thumbnail ? (
-          <img
+          <Image
             src={site.thumbnail}
             alt={site.title}
-            className="object-cover w-full h-full"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="flex items-center justify-center h-full">

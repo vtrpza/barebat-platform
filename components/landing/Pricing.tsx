@@ -18,7 +18,7 @@ const tiers = [
       'Galeria de fotos básica',
     ],
     cta: 'Começar Grátis',
-    href: '/auth/signin',
+    href: '/auth/entrar',
   },
   {
     name: 'Premium',
@@ -34,7 +34,7 @@ const tiers = [
       'Assistente de IA avançado',
     ],
     cta: 'Escolher Premium',
-    href: '/auth/signin?plan=premium',
+    href: '/auth/entrar?plan=premium',
     mostPopular: true,
   },
   {
@@ -51,7 +51,7 @@ const tiers = [
       'Menor taxa de comissão',
     ],
     cta: 'Escolher Profissional',
-    href: '/auth/signin?plan=pro',
+    href: '/auth/entrar?plan=pro',
   },
 ]
 
