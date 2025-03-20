@@ -48,12 +48,6 @@ barebat-platform/
 ├── types/
 ├── utils/
 └── public/
-    ├── images/
-    │   └── pattern.svg
-    ├── testimonials/
-    │   ├── avatar-1.jpg
-    │   ├── avatar-2.jpg
-    │   └── avatar-3.jpg
     └── templates/
         └── thumbnails/
 ```
