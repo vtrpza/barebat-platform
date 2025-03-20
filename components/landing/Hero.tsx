@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -48,18 +50,22 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link
-              href="/sites/new"
-              className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 shadow-lg shadow-indigo-500/20 transform transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/30"
-            >
-              Comece Gratuitamente
-            </Link>
-            <Link
-              href="#como-funciona"
-              className="inline-flex items-center px-8 py-4 border-2 border-gray-200 text-lg font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 hover:border-indigo-100 transform transition-all duration-200 hover:scale-105 hover:shadow-lg"
-            >
-              Como Funciona
-            </Link>
+            <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+              <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+                <Link
+                  href="/auth/signin"
+                  className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transform transition-all duration-200 hover:scale-105"
+                >
+                  Comece Gratuitamente
+                </Link>
+                <Link
+                  href="#como-funciona"
+                  className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10 transform transition-all duration-200 hover:scale-105"
+                >
+                  Como Funciona
+                </Link>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -74,7 +80,7 @@ export default function Hero() {
                   <div key={i} className="inline-block h-12 w-12">
                     <Image
                       className="h-12 w-12 rounded-full ring-4 ring-white"
-                      src={`https://api.dicebear.com/7.x/personas/svg?seed=user-${i}&backgroundColor=indigo`}
+                      src={`https://api.dicebear.com/7.x/personas/svg?seed=user-${i}&backgroundColor=b6e3f4`}
                       alt={`User ${i}`}
                       width={48}
                       height={48}

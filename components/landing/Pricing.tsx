@@ -1,4 +1,7 @@
+'use client'
+
 import { CheckIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const tiers = [
   {
@@ -15,7 +18,7 @@ const tiers = [
       'Galeria de fotos básica',
     ],
     cta: 'Começar Grátis',
-    href: '/sites/new',
+    href: '/auth/signin',
   },
   {
     name: 'Premium',
@@ -31,7 +34,7 @@ const tiers = [
       'Assistente de IA avançado',
     ],
     cta: 'Escolher Premium',
-    href: '/sites/new?plan=premium',
+    href: '/auth/signin?plan=premium',
     mostPopular: true,
   },
   {
@@ -48,7 +51,7 @@ const tiers = [
       'Menor taxa de comissão',
     ],
     cta: 'Escolher Profissional',
-    href: '/sites/new?plan=pro',
+    href: '/auth/signin?plan=pro',
   },
 ]
 
@@ -113,16 +116,16 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <a
+              <Link
                 href={tier.href}
                 className={`mt-8 block w-full rounded-md border ${
                   tier.mostPopular
                     ? 'border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700'
                     : 'border-gray-300 bg-white text-gray-900 hover:bg-gray-50'
-                } px-6 py-3 text-center text-base font-medium`}
+                } px-6 py-3 text-center text-base font-medium transform transition-all duration-200 hover:scale-105`}
               >
                 {tier.cta}
-              </a>
+              </Link>
             </div>
           ))}
         </div>

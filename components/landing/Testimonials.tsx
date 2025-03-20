@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { StarIcon } from '@heroicons/react/24/solid'
 import SectionContainer from './SectionContainer'
