@@ -1,7 +1,7 @@
 # BAREBAT Platform
 
 ## About
-BAREBAT is an AI-powered platform that simplifies the creation of Bar and Bat Mitzvah websites using cutting-edge technologies. Our platform combines the power of OpenAI with Builder.io's visual editor to provide an intuitive and efficient website creation experience.
+BAREBAT is an AI-powered platform for brazilian market only, that simplifies the creation of Bar and Bat Mitzvah websites using cutting-edge technologies. Our platform combines the power of OpenAI with Builder.io's visual editor to provide an intuitive and efficient website creation experience.
 
 ## Tech Stack
 - **Frontend**: Next.js 14+ with App Router
