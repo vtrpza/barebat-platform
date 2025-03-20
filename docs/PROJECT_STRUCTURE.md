@@ -6,33 +6,49 @@
 barebat-platform/
 ├── app/
 │   ├── api/
+│   │   └── sites/
+│   │       └── create/
+│   │           └── route.ts
 │   ├── auth/
 │   ├── dashboard/
 │   │   └── page.tsx
 │   ├── editor/
 │   ├── sites/
+│   │   └── new/
+│   │       └── page.tsx
 │   ├── layout.tsx
 │   ├── page.tsx
 │   └── globals.css
 ├── components/
 │   ├── builder/
+│   │   ├── GiftRegistry.tsx
+│   │   ├── PhotoGallery.tsx
+│   │   └── RSVPForm.tsx
 │   ├── dashboard/
 │   │   └── sidebar/
 │   ├── editor/
+│   │   ├── TemplateSelector.tsx
+│   │   ├── TemplatePreview.tsx
+│   │   └── TemplateCustomizer.tsx
 │   └── shared/
 ├── lib/
 │   ├── builder/
+│   │   ├── templates.ts
+│   │   ├── client.ts
+│   │   └── config.ts
 │   ├── supabase/
 │   ├── stripe/
 │   └── openai/
 ├── types/
 ├── utils/
 └── public/
+    └── templates/
+        └── thumbnails/
 ```
 
 ## Development Status
 
-### Phase 1: Foundation (Current Phase)
+### Phase 1: Foundation (✅ Complete)
 1. ✅ Project Setup
    - ✅ Next.js 14+ configuration
    - ✅ TypeScript setup
@@ -54,13 +70,24 @@ barebat-platform/
    - ✅ User profiles
    - ✅ Protected routes
 
-4. 🟡 Builder.io Integration (Current Focus)
-   - 🟡 SDK setup
-   - [ ] Component registration
-   - [ ] Visual editor configuration
-   - [ ] Custom blocks setup
+4. ✅ Builder.io Integration
+   - ✅ SDK setup
+   - ✅ Component registration
+   - ✅ Visual editor configuration
+   - ✅ Custom blocks setup
+   - ✅ Core components development
+     - ✅ RSVP Form
+     - ✅ Gift Registry
+     - ✅ Photo Gallery
 
-### Phase 2: Core Features (Next Phase)
+5. ✅ Template System
+   - ✅ Template configuration
+   - ✅ Template selector component
+   - ✅ New site creation page
+   - ✅ Template preview system
+   - ✅ Template customization options
+
+### Phase 2: Core Features (Current Focus)
 1. Website Management
    - [ ] Site creation flow
    - [ ] Template selection interface
