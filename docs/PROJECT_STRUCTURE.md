@@ -116,14 +116,14 @@ barebat-platform/
    - Standard support
    - 8% gift commission
 
-2. Premium Tier ($99)
+2. Premium Tier (R$99)
    - All templates
    - Full customization
    - Priority support
    - 5% gift commission
    - Custom domain
 
-3. Professional Tier ($199)
+3. Professional Tier (R$199)
    - Everything in Premium
    - Design consultation
    - 3% gift commission

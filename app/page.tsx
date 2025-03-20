@@ -3,7 +3,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <h1 className="text-4xl font-bold mb-4">BAREBAT Platform</h1>
       <p className="text-lg text-gray-600">
-        Create beautiful Bar and Bat Mitzvah websites with AI assistance
+        Crie lindos sites para Bar e Bat Mitzvah com assistência de IA
       </p>
     </main>
   )
