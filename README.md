@@ -29,11 +29,11 @@ BAREBAT is an AI-powered platform for brazilian market only, that simplifies the
 ## Development Roadmap
 
 ### Phase 1: Foundation
-- [ ] Project setup and configuration
-- [ ] Basic Next.js structure
-- [ ] Supabase integration
-- [ ] Authentication system
-- [ ] Builder.io integration
+- [x] Project setup and configuration
+- [x] Basic Next.js structure
+- [x] Supabase integration
+- [x] Authentication system
+- [🟡] Builder.io integration (In Progress)
 
 ### Phase 2: Core Features
 - [ ] AI integration with OpenAI
