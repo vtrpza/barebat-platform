@@ -1,21 +1,23 @@
 # Project Structure and Development Plan
 
-## Directory Structure
+## Current Directory Structure
 
 ```
 barebat-platform/
 ├── app/
 │   ├── api/
-│   │   ├── auth/
-│   │   ├── builder/
-│   │   ├── gifts/
-│   │   └── webhooks/
+│   ├── auth/
 │   ├── dashboard/
+│   │   └── page.tsx
 │   ├── editor/
-│   └── sites/
+│   ├── sites/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
 ├── components/
 │   ├── builder/
 │   ├── dashboard/
+│   │   └── sidebar/
 │   ├── editor/
 │   └── shared/
 ├── lib/
@@ -28,28 +30,30 @@ barebat-platform/
 └── public/
 ```
 
-## Development Phases
+## Development Status
 
-### Phase 1: Foundation (Week 1-2)
-1. Project Setup
-   - Next.js configuration
+### Phase 1: Foundation (Current Phase)
+1. ✅ Project Setup
+   - Next.js 14+ configuration
    - TypeScript setup
    - TailwindCSS integration
    - ESLint and Prettier configuration
 
-2. Authentication & Database
+2. 🟡 Basic UI Components (In Progress)
+   - ✅ Layout components
+   - ✅ Navigation sidebar
+   - ✅ Dashboard structure
+   - ✅ Responsive design system
+   - 🟡 Theme configuration
+
+3. 🟡 Authentication & Database (Next Focus)
    - Supabase setup
-   - User authentication
+   - User authentication flows
    - Database schema design
    - User profiles
+   - Protected routes
 
-3. Basic UI Components
-   - Layout components
-   - Navigation
-   - Dashboard structure
-   - Responsive design system
-
-### Phase 2: Core Features (Week 3-4)
+### Phase 2: Core Features (Upcoming)
 1. Builder.io Integration
    - Visual editor setup
    - Component library
@@ -68,7 +72,7 @@ barebat-platform/
    - Preview system
    - Publishing mechanism
 
-### Phase 3: Monetization (Week 5-6)
+### Phase 3: Monetization (Planned)
 1. Stripe Integration
    - Payment processing
    - Subscription system
@@ -87,7 +91,7 @@ barebat-platform/
    - Priority support
    - Analytics
 
-### Phase 4: Enhancement (Week 7-8)
+### Phase 4: Enhancement (Future)
 1. Performance
    - Image optimization
    - Caching strategy
@@ -105,6 +109,73 @@ barebat-platform/
    - Export functionality
    - Backup system
    - API documentation
+
+## Immediate Next Steps
+
+### 1. Authentication System
+```typescript
+// Required Files
+lib/
+  └── supabase/
+      └── client.ts    // Supabase client configuration
+app/
+  └── auth/
+      ├── signin/
+      │   └── page.tsx
+      └── signup/
+          └── page.tsx
+components/
+  └── auth/
+      └── AuthForm.tsx
+middleware.ts         // Protected routes
+```
+
+### 2. Database Schema
+```sql
+-- Core Tables
+users (extends auth.users)
+  - id
+  - email
+  - full_name
+  - avatar_url
+  - subscription_tier
+  - created_at
+
+sites
+  - id
+  - user_id
+  - title
+  - slug
+  - template_id
+  - status
+  - created_at
+  - updated_at
+
+templates
+  - id
+  - name
+  - thumbnail
+  - builder_data
+  - is_premium
+  - created_at
+
+gifts
+  - id
+  - site_id
+  - name
+  - description
+  - amount
+  - currency
+  - created_at
+
+transactions
+  - id
+  - gift_id
+  - amount
+  - status
+  - commission_rate
+  - created_at
+```
 
 ## Business Model Details
 
@@ -168,10 +239,22 @@ barebat-platform/
 - Lazy loading
 - Server-side rendering
 
-## Next Steps
+## Development Guidelines
 
-1. Set up development environment
-2. Create basic Next.js structure
-3. Implement authentication
-4. Begin Builder.io integration
-5. Start OpenAI implementation
+1. Code Structure
+   - Follow Next.js 14 best practices
+   - Use TypeScript for type safety
+   - Implement proper error handling
+   - Write unit tests for critical features
+
+2. Git Workflow
+   - Feature branches
+   - Pull request reviews
+   - Semantic versioning
+   - Conventional commits
+
+3. Documentation
+   - Code comments
+   - API documentation
+   - Component documentation
+   - Setup instructions
